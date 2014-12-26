@@ -1,0 +1,4 @@
+name = Catalog Search
+description = This module provides a block for searching the UAL catalog.
+core = 7.x
+version = 1.0.0

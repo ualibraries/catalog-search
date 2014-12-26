@@ -1,0 +1,185 @@
+<?php
+/**
+ * @file
+ * The Catalog Search module.
+ *
+ * The Catalog Search module provides a configurable UAL catalog search box.
+ */
+
+/** Hook implementations **/
+
+/**
+ * Implements hook_menu().
+ */
+function catalog_search_menu() {
+  $items = array();
+
+  $items['admin/config/search/catalog-search'] = array(
+    'title' => 'Catalog Search',
+    'description' => 'Configure Catalog Search.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('catalog_search_admin_settings'),
+    'access arguments' => array('Administer Catalog Search'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'catalog_search.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_perm().
+ */
+function catalog_search_perm() {
+  return array('Use Catalog Search', 'Administer Catalog Search');
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function catalog_search_block_info() {
+  $blocks[0]['info'] = t('Catalog Search Box');
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function catalog_search_block_view($delta = '') {
+  $block = array();
+  if ($delta == 0) {
+    drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
+    drupal_add_js(drupal_get_path('module', 'catalog_search') . '/assets/js/scripts.min.js');
+    $block['subject'] = t('Search');
+    $block['content'] = theme(
+      'catalog_search',
+      array(
+        'catalog_form' => drupal_render(drupal_get_form('catalog_search_catalog_form')),
+        'help_text' => variable_get('catalog_search_help_text', ''),
+      )
+    );
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function catalog_search_theme() {
+  return array(
+    'catalog_search' => array(
+      'variables' => array(
+        'catalog_form' => 'catalog',
+        'help_text' => 'HELP!',
+      ),
+      'template' => 'catalog_search',
+    ),
+  );
+}
+
+/** Forms **/
+
+/**
+ * Form constructor for the catalog search form.
+ *
+ * @see catalog_search_catalog_form_submit()
+ *
+ * @ingroup forms
+ */
+function catalog_search_catalog_form() {
+  $form = array(
+    'search-type--catalog' => array(
+      '#type' => 'select',
+      '#title' => t('Search Type'),
+      '#default_value' => 'X',
+      '#options' => array(
+        'X' => t('Keyword'),
+        't' => t('Title'),
+        'a' => t('Author'),
+        'c' => t('Call Number'),
+        's' => t('Journal Title'),
+      ),
+      '#attributes' => array('class' => 'chosen-select-nosearch'),
+    ),
+    'search-fields' => array(
+      '#type' => 'markup',
+      '#value' => '<div class="search-fields">',
+    ),
+    'search' => array(
+      '#type' => 'textfield',
+      '#title' => t('Search'),
+      '#maxlength' => PHP_INT_MAX,
+      '#attributes' => array('placeholder' => t('Search catalog')),
+    ),
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Search'),
+    ),
+    'loading-indicator' => array(
+      '#type' => 'markup',
+      '#value' => '<div class="loading"><span>Loading…</span></div>',
+    ),
+    'search-fields-end' => array(
+      '#type' => 'markup',
+      '#value' => '</div>',
+    ),
+    'advanced-search' => array(
+      '#type' => 'markup',
+      '#value' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
+    ),
+  );
+
+  return $form;
+}
+
+/**
+ * Form submission handler for homepage_search_catalog_form().
+ *
+ * @see catalog_search_catalog_form()
+ */
+function catalog_search_catalog_form_submit($form, &$form_state) {
+  $catalog_root = "http://sabio.library.arizona.edu/search/";
+
+  // 9 is the main scope.
+  $http_query_parameters = array(
+    'SEARCH' => $form_state['values']['search'],
+    'searchscope' => 9,
+  );
+
+  // If the availlim parameter is present at all, Millennium think it's on.
+  // So only set it when it's on.
+  if (isset($form_state['values']['availlim']) && $form_state['values']['availlim']) {
+    $http_query_parameters['availlim'] = 1;
+  }
+
+  // keyword, title, etc.
+  $user_search_type = $form_state['values']['search-type--catalog'];
+
+  $http_query_string = _catalog_search_http_build_query($http_query_parameters);
+
+  $redirect_url = $catalog_root . $user_search_type . '?' . $http_query_string;
+  $form_state['redirect'] = $redirect_url;
+}
+
+/** "Private" functions **/
+
+/**
+ * PHP 5.3-compatible http_build_query().
+ *
+ * @param array $parameters
+ *   The http_build_query() parameters.
+ *
+ * @return string
+ *   Query string
+ */
+function _catalog_search_http_build_query($parameters) {
+  // PHP 5.4 only: $http_query_string = http_build_query(
+  // $http_query_parameters, NULL, '&', PHP_QUERY_RFC3986);
+  // PHP 5.3 doesn't have the enc_type parameter, so have to switch + to %20
+  // manually.
+  $http_query_string = http_build_query($parameters, NULL, '&');
+
+  return str_replace('+', '%20', $http_query_string);
+}
