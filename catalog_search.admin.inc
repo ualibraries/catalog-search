@@ -21,6 +21,19 @@ function catalog_search_admin_settings() {
     '#description' => t('Set the help text for the catalog box.'),
   );
 
+  $form['catalog_search_scope'] = array(
+    '#type' => 'select',
+    '#title' => t('Catalog Scope'),
+    '#options' => array(
+      9 => 'University Libraries',
+      1 => 'Arizona Health Sciences Library',
+      3 => 'Poetry Center',
+      5 => 'Law',
+    ),
+    '#default_value' => variable_get('catalog_search_scope', 9),
+    '#description' => t('Choose the scope to search in the catalog.'),
+  );
+
   return system_settings_form($form);
 }
 

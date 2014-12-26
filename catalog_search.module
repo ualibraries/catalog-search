@@ -51,11 +51,12 @@ function catalog_search_block_view($delta = '') {
   if ($delta == 0) {
     drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
     drupal_add_js(drupal_get_path('module', 'catalog_search') . '/assets/js/scripts.min.js');
+    $catalog_form = drupal_get_form('catalog_search_catalog_form');
     $block['subject'] = t('Search');
     $block['content'] = theme(
       'catalog_search',
       array(
-        'catalog_form' => drupal_render(drupal_get_form('catalog_search_catalog_form')),
+        'catalog_form' => drupal_render($catalog_form),
         'help_text' => variable_get('catalog_search_help_text', ''),
       )
     );
@@ -145,7 +146,7 @@ function catalog_search_catalog_form_submit($form, &$form_state) {
   // 9 is the main scope.
   $http_query_parameters = array(
     'SEARCH' => $form_state['values']['search'],
-    'searchscope' => 9,
+    'searchscope' => variable_get('catalog_search_scope', 9),
   );
 
   // If the availlim parameter is present at all, Millennium think it's on.
