@@ -34,6 +34,19 @@ function catalog_search_admin_settings() {
     '#description' => t('Choose the scope to search in the catalog.'),
   );
 
+  $form['catalog_search_additional_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Additional Search Types'),
+    '#options' => array(
+      't' => t('Title'),
+      'a' => t('Author'),
+      'c' => t('Call Number'),
+      's' => t('Journal Title'),
+    ),
+    '#default_value' => variable_get('catalog_search_additional_types', array()),
+    '#description' => t('Choose which search types you want to allow. Keyword will always be available and default.'),
+  );
+
   return system_settings_form($form);
 }
 
