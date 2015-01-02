@@ -102,7 +102,7 @@ function catalog_search_catalog_form() {
         'c' => t('Call Number'),
         's' => t('Journal Title'),
       ),
-      '#attributes' => array('class' => 'chosen-select-nosearch'),
+      '#attributes' => array('class' => array('chosen-select-nosearch')),
     ),
     'search-fields' => array(
       '#type' => 'markup',
