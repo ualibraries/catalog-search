@@ -90,46 +90,66 @@ function catalog_search_theme() {
  * @ingroup forms
  */
 function catalog_search_catalog_form() {
-  $form = array(
-    'search-type--catalog' => array(
+  $search_type_options = array(
+    'X' => t('Keyword'),
+  );
+  // todo: DRY this with catalog_search_admin_settings().
+  foreach (array_filter(variable_get('catalog_search_additional_types', array())) as $type) {
+    switch ($type) {
+      case 't':
+        $search_type_options[$type] = t('Title');
+        break;
+
+      case 'a':
+        $search_type_options[$type] = t('Author');
+        break;
+
+      case 'c':
+        $search_type_options[$type] = t('Call Number');
+        break;
+
+      case 's':
+        $search_type_options[$type] = t('Journal Title');
+        break;
+    }
+  }
+
+  $form = array();
+
+  if (count($search_type_options) > 1) {
+    $form['search-type--catalog'] = array(
       '#type' => 'select',
       '#title' => t('Search Type'),
       '#default_value' => 'X',
-      '#options' => array(
-        'X' => t('Keyword'),
-        't' => t('Title'),
-        'a' => t('Author'),
-        'c' => t('Call Number'),
-        's' => t('Journal Title'),
-      ),
+      '#options' => $search_type_options,
       '#attributes' => array('class' => array('chosen-select-nosearch')),
-    ),
-    'search-fields' => array(
-      '#type' => 'markup',
-      '#value' => '<div class="search-fields">',
-    ),
-    'search' => array(
-      '#type' => 'textfield',
-      '#title' => t('Search'),
-      '#maxlength' => PHP_INT_MAX,
-      '#attributes' => array('placeholder' => t('Search catalog')),
-    ),
-    'submit' => array(
-      '#type' => 'submit',
-      '#value' => t('Search'),
-    ),
-    'loading-indicator' => array(
-      '#type' => 'markup',
-      '#value' => '<div class="loading"><span>Loading…</span></div>',
-    ),
-    'search-fields-end' => array(
-      '#type' => 'markup',
-      '#value' => '</div>',
-    ),
-    'advanced-search' => array(
-      '#type' => 'markup',
-      '#value' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
-    ),
+    );
+  }
+  $form['search-fields'] = array(
+    '#type' => 'markup',
+    '#value' => '<div class="search-fields">',
+  );
+  $form['search'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search'),
+    '#maxlength' => PHP_INT_MAX,
+    '#attributes' => array('placeholder' => t('Search catalog')),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Search'),
+  );
+  $form['loading-indicator'] = array(
+    '#type' => 'markup',
+    '#value' => '<div class="loading"><span>Loading…</span></div>',
+  );
+  $form['search-fields-end'] = array(
+    '#type' => 'markup',
+    '#value' => '</div>',
+  );
+  $form['advanced-search'] = array(
+    '#type' => 'markup',
+    '#value' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
   );
 
   return $form;
@@ -156,7 +176,13 @@ function catalog_search_catalog_form_submit($form, &$form_state) {
   }
 
   // keyword, title, etc.
-  $user_search_type = $form_state['values']['search-type--catalog'];
+  if (isset($form_state['values']['search-type--catalog'])) {
+    $user_search_type = $form_state['values']['search-type--catalog'];
+  }
+  else {
+    // The default is keyword search.
+    $user_search_type = 'X';
+  }
 
   $http_query_string = _catalog_search_http_build_query($http_query_parameters);
 
