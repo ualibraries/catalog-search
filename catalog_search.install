@@ -13,6 +13,7 @@ function catalog_search_install() {
   variable_set('catalog_search_help_text', 'Search our classic catalog directly for books, ebooks, films and more.');
   variable_set('catalog_search_scope', 9);
   variable_set('catalog_search_additional_types', array());
+  variable_set('catalog_search_show_advanced', 1);
 }
 
 /**
@@ -22,4 +23,5 @@ function catalog_search_uninstall() {
   variable_del('catalog_search_help_text');
   variable_del('catalog_search_scope');
   variable_del('catalog_search_additional_types');
+  variable_del('catalog_search_show_advanced');
 }

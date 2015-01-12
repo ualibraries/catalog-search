@@ -144,9 +144,11 @@ function catalog_search_catalog_form() {
   $form['search-fields-end'] = array(
     '#markup' => '</div>',
   );
-  $form['advanced-search'] = array(
-    '#markup' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
-  );
+  if (variable_get('catalog_search_show_advanced', 1)) {
+    $form['advanced-search'] = array(
+      '#markup' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
+    );
+  }
 
   return $form;
 }

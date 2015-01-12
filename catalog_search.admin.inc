@@ -47,6 +47,13 @@ function catalog_search_admin_settings() {
     '#description' => t('Choose which search types you want to allow. Keyword will always be available and default.'),
   );
 
+  $form['catalog_search_show_advanced'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show advanced search link'),
+    '#default_value' => variable_get('catalog_search_show_advanced', 1),
+    '#description' => t('Display a link to the advanced keyword search form.'),
+  );
+
   return system_settings_form($form);
 }
 
