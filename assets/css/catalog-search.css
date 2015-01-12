@@ -130,7 +130,7 @@
   background-image: url("search-icon.png");
 }
 /* line 109, catalog-search.scss */
-.cssanimations .catalog .submitted input[type="submit"] {
+.catalog .submitted input[type="submit"] {
   background-image: none;
   background-color: #ab0520;
 }
@@ -209,6 +209,7 @@
   text-indent: 120%;
 }
 /* line 161, catalog-search.scss */
-.cssanimations .submitted .loading {
+.submitted .loading {
   display: block;
+  overflow: hidden;
 }

@@ -106,7 +106,7 @@
       }
   }
   .submitted input[type="submit"] {
-      .cssanimations &{
+      &{
           background-image: none;
           background-color: $az-red;
       }
@@ -158,7 +158,8 @@
 		overflow: hidden;
   		text-indent: 120%;
   	}
-  	.cssanimations .submitted &{
+    .submitted &{
   		display: block;
+        overflow: hidden;
   	}
 }
