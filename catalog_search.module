@@ -49,8 +49,8 @@ function catalog_search_block_info() {
 function catalog_search_block_view($delta = '') {
   $block = array();
   if ($delta == 0) {
-    drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
-    drupal_add_js(drupal_get_path('module', 'catalog_search') . '/assets/js/scripts.min.js');
+    //drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
+    //drupal_add_js(drupal_get_path('module', 'catalog_search') . '/assets/js/catalog-search.js');
     $catalog_form = drupal_get_form('catalog_search_catalog_form');
     $block['subject'] = t('Search');
     $block['content'] = theme(
@@ -126,8 +126,7 @@ function catalog_search_catalog_form() {
     );
   }
   $form['search-fields'] = array(
-    '#type' => 'markup',
-    '#value' => '<div class="search-fields">',
+    '#markup' => '<div class="search-fields">',
   );
   $form['search'] = array(
     '#type' => 'textfield',
@@ -140,16 +139,13 @@ function catalog_search_catalog_form() {
     '#value' => t('Search'),
   );
   $form['loading-indicator'] = array(
-    '#type' => 'markup',
-    '#value' => '<div class="loading"><span>Loading…</span></div>',
+    '#markup' => '<div class="loading"><span>Loading…</span></div>',
   );
   $form['search-fields-end'] = array(
-    '#type' => 'markup',
-    '#value' => '</div>',
+    '#markup' => '</div>',
   );
   $form['advanced-search'] = array(
-    '#type' => 'markup',
-    '#value' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
+    '#markup' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
   );
 
   return $form;
