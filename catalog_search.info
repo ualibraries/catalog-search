@@ -1,4 +1,6 @@
 name = Catalog Search
-description = This module provides a block for searching the UAL catalog.
+description = This module provides a block for searching the UA Libraries catalog.
 core = 7.x
 version = 1.0.0
+dependencies[] = block
+configure = admin/config/search/catalog-search
