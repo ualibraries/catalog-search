@@ -146,7 +146,7 @@ function catalog_search_catalog_form() {
   );
   if (variable_get('catalog_search_show_advanced', 1)) {
     $form['advanced-search'] = array(
-      '#markup' => '<a class="advanced-search" href="' . _catalog_search_advanced_link() . '">Advanced Search</a>',
+      '#markup' => '<a class="advanced-search" href="' . _catalog_search_link($search_query = '',$search_type = 'X') . '">Advanced Search</a>',
     );
   }
 
@@ -159,57 +159,35 @@ function catalog_search_catalog_form() {
  * @see catalog_search_catalog_form()
  */
 function catalog_search_catalog_form_submit($form, &$form_state) {
-  $catalog_root = "http://sabio.library.arizona.edu/search/";
-
-  // 9 is the main scope.
-  $http_query_parameters = array(
-    'SEARCH' => $form_state['values']['search'],
-    'searchscope' => variable_get('catalog_search_scope', 9),
-  );
-
-  // If the availlim parameter is present at all, Millennium think it's on.
-  // So only set it when it's on.
-  if (isset($form_state['values']['availlim']) && $form_state['values']['availlim']) {
-    $http_query_parameters['availlim'] = 1;
-  }
-
-  // keyword, title, etc.
-  if (isset($form_state['values']['search-type--catalog'])) {
-    $user_search_type = $form_state['values']['search-type--catalog'];
-  }
-  else {
-    // The default is keyword search.
-    $user_search_type = 'X';
-  }
-
-  $http_query_string = _catalog_search_http_build_query($http_query_parameters);
-
-  $redirect_url = $catalog_root . $user_search_type . '?' . $http_query_string;
-  $form_state['redirect'] = $redirect_url;
+  $form_state['redirect'] = _catalog_search_link($form_state['values']['search'], $form_state['values']['search-type--catalog']);
 }
 
 /** "Private" functions **/
 
 /**
- * Create the advanced search link with the correct scope.
+ * Create a scoped link to the catalog. The default scope is 9 - UA Library.
  *
- * @see catalog_search_catalog_form()
+ * @param string $search_query
+ *   The search query. An empty string triggers the advanced keyword search page.
+ * @param string $search_type
+ *   Keyword, title, author, call number, or journal title. Defaults to X - keyword.
+ *
+ * @return string
+ *   A link to the catalog including the query and search type.
  */
-function _catalog_search_advanced_link() {
+function _catalog_search_link($search_query, $search_type) {
   $catalog_root = "http://sabio.library.arizona.edu/search/";
 
   $http_query_parameters = array(
-    'SEARCH' => '', //SEARCH has to be present but blank
+    'SEARCH' => $search_query,
     'searchscope' => variable_get('catalog_search_scope', 9),
   );
 
-  $user_search_type = 'X';
-
   $http_query_string = _catalog_search_http_build_query($http_query_parameters);
 
-  $advanced_search_link = $catalog_root . $user_search_type . '?' . $http_query_string;
+  $catalog_link = $catalog_root . $search_type . '?' . $http_query_string;
 
-  return $advanced_search_link;
+  return $catalog_link;
 }
 
 /**
