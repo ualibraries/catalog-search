@@ -146,7 +146,7 @@ function catalog_search_catalog_form() {
   );
   if (variable_get('catalog_search_show_advanced', 1)) {
     $form['advanced-search'] = array(
-      '#markup' => '<a class="advanced-search" href="http://sabio.library.arizona.edu/search/X">Advanced Search</a>',
+      '#markup' => '<a class="advanced-search" href="' . _catalog_search_advanced_link() . '">Advanced Search</a>',
     );
   }
 
@@ -189,6 +189,28 @@ function catalog_search_catalog_form_submit($form, &$form_state) {
 }
 
 /** "Private" functions **/
+
+/**
+ * Create the advanced search link with the correct scope.
+ *
+ * @see catalog_search_catalog_form()
+ */
+function _catalog_search_advanced_link() {
+  $catalog_root = "http://sabio.library.arizona.edu/search/";
+
+  $http_query_parameters = array(
+    'SEARCH' => '', //SEARCH has to be present but blank
+    'searchscope' => variable_get('catalog_search_scope', 9),
+  );
+
+  $user_search_type = 'X';
+
+  $http_query_string = _catalog_search_http_build_query($http_query_parameters);
+
+  $advanced_search_link = $catalog_root . $user_search_type . '?' . $http_query_string;
+
+  return $advanced_search_link;
+}
 
 /**
  * PHP 5.3-compatible http_build_query().
