@@ -1,0 +1,49 @@
+// clearfix
+$red: #FF4136;
+$az-red: #ab0520;
+$az-blue: #0c234b;
+$title-blue: tint($az-blue,15%);
+$link-color: #005FB1;
+%cf{
+	&:after {
+		content:"";
+		display:table;
+		clear:both;
+	}
+}
+%droplet-bullet{
+	position: relative;
+	padding-left: 14px;
+	&:before{
+		content: ' ';
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: 0;
+		top: 50%;
+		margin-top: -5px;
+		border:{
+			style: solid;
+			width: 5px;
+		}
+		border-radius: 50% 0 50% 50%
+	}
+}
+%visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+%border-triangle-centered{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+}

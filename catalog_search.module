@@ -49,7 +49,7 @@ function catalog_search_block_info() {
 function catalog_search_block_view($delta = '') {
   $block = array();
   if ($delta == 0) {
-    //drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
+    drupal_add_css(drupal_get_path('module', 'catalog_search') . '/assets/css/catalog-search.css');
     //drupal_add_js(drupal_get_path('module', 'catalog_search') . '/assets/js/catalog-search.js');
     $catalog_form = drupal_get_form('catalog_search_catalog_form');
     $block['subject'] = t('Search');

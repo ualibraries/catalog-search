@@ -1,0 +1,164 @@
+@import "compass",
+		"mixins";
+
+.catalog{
+  line-height: 1.5;
+  width: 90%;
+  font-size: 14px;
+  box-sizing: border-box;
+  @extend %cf;
+  *, *:before, *:after{
+      box-sizing: border-box;
+  }
+  ul,p{
+      padding: 0;
+      margin: 0;
+  }
+  a{
+      &:link{
+          color: $az-blue;
+      }
+      &:hover, &:active{
+          color: $az-red;
+      }
+  }
+  .form-item{
+      margin: 0;
+      padding: 0;
+  }
+  input.form-submit {
+    margin: 0;
+    padding: 0;
+  }
+  .search-fields{
+      position: relative;
+      margin: 0.5em 0;
+      label{
+          @extend %visually-hidden;
+      }
+      .form-submit{
+          position: absolute;
+          top: 0;
+          right: 0;
+      }
+  }
+
+  .form-item-search-type--catalog,
+  .catalog .form-item-search{
+      float: left;
+      width: 25%;
+      margin-right: 1%;
+      margin-top: 0.5em;
+      label{
+          @extend %visually-hidden;
+      }
+      select{
+          margin: 0;
+          float: none;
+          padding: 0;
+          font-size: inherit;
+          font-family: inherit;
+          line-height: inherit;
+          background: inherit;
+          height: 30px;
+          width: 100%;
+      }
+  }
+  .search-fields {
+    float: left;
+    width: 74%;
+  }
+  input[type="search"],
+  input[type="text"]{
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 2px 50px 2px 10px;
+      height: 30px;
+      transition: all .2s ease;
+      border-radius: 3px;
+      -webkit-appearance: none;
+      font-size: 15px;
+      border: solid 1px #ddd;
+      font-family: inherit;
+  }
+  .search-fields input[type="submit"]{
+      height: 32px;
+      overflow: hidden;
+      border: 0;
+      width: 50px;
+      height: 30px;
+      background-color: $az-blue;
+      background-image: url('search-icon.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      border: 0;
+      border-radius:  0 3px 3px 0;
+      /* Hide "search" text in button */
+      text-indent: -500%;
+      text-transform: capitalize;
+      &:hover, &:focus, &:active{
+          background-color: $az-red;
+      }
+      .no-svg &{
+          background-image: url('search-icon.png');
+      }
+  }
+  .submitted input[type="submit"] {
+      .cssanimations &{
+          background-image: none;
+          background-color: $az-red;
+      }
+  }
+  input[type="checkbox"]{
+      padding: 0;
+      margin:0;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+  }
+  label{
+      font-weight: normal;
+      display: block;
+  }
+  .advanced-search{
+      float: right;
+      padding: 10px 0 10px;
+  }
+}
+
+@keyframes rotate-forever {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.loading {
+	position: absolute;
+	display: none;
+	width: 20px;
+	height: 20px;
+	top: 50%;
+	right: 15px;
+	margin-top: -10px;
+	border: 2px solid #fff;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation-duration: 0.75s;
+	animation-iteration-count: infinite;
+	animation-name: rotate-forever;
+	animation-timing-function: linear;
+	-webkit-transform: translate3d(0,0,0);
+	span{
+		display: block;
+		overflow: hidden;
+  		text-indent: 120%;
+  	}
+  	.cssanimations .submitted &{
+  		display: block;
+  	}
+}
