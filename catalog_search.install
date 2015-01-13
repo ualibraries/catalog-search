@@ -14,6 +14,7 @@ function catalog_search_install() {
   variable_set('catalog_search_scope', 9);
   variable_set('catalog_search_additional_types', array());
   variable_set('catalog_search_show_advanced', 1);
+  variable_set('catalog_search_placeholder_text', 'Search catalog');
 }
 
 /**
@@ -24,4 +25,5 @@ function catalog_search_uninstall() {
   variable_del('catalog_search_scope');
   variable_del('catalog_search_additional_types');
   variable_del('catalog_search_show_advanced');
+  variable_del('catalog_search_placeholder_text');
 }

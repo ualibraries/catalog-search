@@ -47,6 +47,13 @@ function catalog_search_admin_settings() {
     '#description' => t('Choose which search types you want to allow. Keyword will always be available and default.'),
   );
 
+  $form['catalog_search_placeholder_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Placeholder text'),
+    '#default_value' => variable_get('catalog_search_placeholder_text', ''),
+    '#description' => t('Text to display in the search box before the user enters their search terms.'),
+  );
+
   $form['catalog_search_show_advanced'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show advanced search link'),

@@ -132,7 +132,7 @@ function catalog_search_catalog_form() {
     '#type' => 'textfield',
     '#title' => t('Search'),
     '#maxlength' => PHP_INT_MAX,
-    '#attributes' => array('placeholder' => t('Search catalog')),
+    '#attributes' => array('placeholder' => variable_get('catalog_search_placeholder_text')),
   );
   $form['submit'] = array(
     '#type' => 'submit',
