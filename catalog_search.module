@@ -19,7 +19,7 @@ function catalog_search_menu() {
     'description' => 'Configure Catalog Search.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('catalog_search_admin_settings'),
-    'access arguments' => array('Administer Catalog Search'),
+    'access arguments' => array('administer catalog search'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'catalog_search.admin.inc',
   );
@@ -28,10 +28,15 @@ function catalog_search_menu() {
 }
 
 /**
- * Implements hook_perm().
+ * Implements hook_permission().
  */
-function catalog_search_perm() {
-  return array('Use Catalog Search', 'Administer Catalog Search');
+function catalog_search_permission() {
+  return array(
+    'administer catalog search' => array(
+      'title' => t('Administer Catalog Search'),
+      'description' => t('Customize the form text, choose available search types, and select the searchscope.'),
+    ),
+  );
 }
 
 /**
