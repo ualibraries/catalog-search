@@ -98,7 +98,7 @@
       background-image: url('search-icon.svg');
       /**
        * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
-       * because IE 8 doesn't not support SVG.
+       * because IE 8 doesn't support SVG.
        *
        * It's a much better idea to use something like modernizr:
        * http://modernizr.com/
