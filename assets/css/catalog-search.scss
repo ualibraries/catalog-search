@@ -9,10 +9,12 @@
   *, *:before, *:after{
       box-sizing: border-box;
   }
+
   ul,p{
       padding: 0;
       margin: 0;
   }
+
   a{
       &:link{
           color: $az-blue;
@@ -21,14 +23,17 @@
           color: $az-red;
       }
   }
+
   .form-item{
       margin: 0;
       padding: 0;
   }
+
   input.form-submit {
     margin: 0;
     padding: 0;
   }
+
   .search-fields{
       position: relative;
       margin: 0.5em 0;
@@ -63,10 +68,12 @@
           width: 100%;
       }
   }
+
   .search-fields {
     float: left;
     width: 74%;
   }
+
   input[type="search"],
   input[type="text"]{
       position: relative;
@@ -81,6 +88,7 @@
       border: solid 1px #ddd;
       font-family: inherit;
   }
+
   .search-fields input[type="submit"]{
       height: 32px;
       overflow: hidden;
@@ -109,12 +117,14 @@
           background-color: $az-red;
       }
   }
+
   .submitted input[type="submit"] {
       &{
           background-image: none;
           background-color: $az-red;
       }
   }
+
   input[type="checkbox"]{
       padding: 0;
       margin:0;
@@ -122,10 +132,12 @@
       position: relative;
       top: -1px;
   }
+
   label{
       font-weight: normal;
       display: block;
   }
+
   .advanced-search{
       float: right;
       padding: 10px 0 10px;
@@ -141,6 +153,7 @@
 		transform: rotate(360deg);
 	}
 }
+
 .loading {
 	position: absolute;
 	display: none;
