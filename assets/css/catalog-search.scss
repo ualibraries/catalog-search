@@ -89,6 +89,14 @@
       height: 30px;
       background-color: $az-blue;
       background-image: url('search-icon.svg');
+      /**
+       * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
+       * because IE 8 doesn't not support SVG.
+       *
+       * It's a much better idea to use something like modernizr:
+       * http://modernizr.com/
+       */
+      background-image: url('search-icon.png')\9;
       background-repeat: no-repeat;
       background-position: center;
       cursor: pointer;
@@ -99,9 +107,6 @@
       text-transform: capitalize;
       &:hover, &:focus, &:active{
           background-color: $az-red;
-      }
-      .no-svg &{
-          background-image: url('search-icon.png');
       }
   }
   .submitted input[type="submit"] {
