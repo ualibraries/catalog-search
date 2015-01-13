@@ -1,5 +1,4 @@
-@import "compass",
-		"mixins";
+@import "mixins";
 
 .catalog{
   line-height: 1.5;
@@ -10,10 +9,12 @@
   *, *:before, *:after{
       box-sizing: border-box;
   }
+
   ul,p{
       padding: 0;
       margin: 0;
   }
+
   a{
       &:link{
           color: $az-blue;
@@ -22,14 +23,17 @@
           color: $az-red;
       }
   }
+
   .form-item{
       margin: 0;
       padding: 0;
   }
+
   input.form-submit {
     margin: 0;
     padding: 0;
   }
+
   .search-fields{
       position: relative;
       margin: 0.5em 0;
@@ -64,10 +68,12 @@
           width: 100%;
       }
   }
+
   .search-fields {
     float: left;
     width: 74%;
   }
+
   input[type="search"],
   input[type="text"]{
       position: relative;
@@ -76,12 +82,12 @@
       padding: 2px 50px 2px 10px;
       height: 30px;
       transition: all .2s ease;
-      border-radius: 3px;
       -webkit-appearance: none;
       font-size: 15px;
       border: solid 1px #ddd;
       font-family: inherit;
   }
+
   .search-fields input[type="submit"]{
       height: 32px;
       overflow: hidden;
@@ -90,27 +96,34 @@
       height: 30px;
       background-color: $az-blue;
       background-image: url('search-icon.svg');
+      /**
+       * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
+       * because IE 8 doesn't not support SVG.
+       *
+       * It's a much better idea to use something like modernizr:
+       * http://modernizr.com/
+       */
+      background-image: url('search-icon.png')\9;
       background-repeat: no-repeat;
       background-position: center;
       cursor: pointer;
       border: 0;
-      border-radius:  0 3px 3px 0;
+      border-radius:  0;
       /* Hide "search" text in button */
       text-indent: -500%;
       text-transform: capitalize;
       &:hover, &:focus, &:active{
           background-color: $az-red;
       }
-      .no-svg &{
-          background-image: url('search-icon.png');
-      }
   }
+
   .submitted input[type="submit"] {
       &{
           background-image: none;
           background-color: $az-red;
       }
   }
+
   input[type="checkbox"]{
       padding: 0;
       margin:0;
@@ -118,25 +131,40 @@
       position: relative;
       top: -1px;
   }
+
   label{
       font-weight: normal;
       display: block;
   }
+
   .advanced-search{
       float: right;
       padding: 10px 0 10px;
   }
 }
 
-@keyframes rotate-forever {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(360deg);
-	}
+@-webkit-keyframes rotate-forever {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
+
+@keyframes rotate-forever {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .loading {
 	position: absolute;
 	display: none;
@@ -148,11 +176,16 @@
 	border: 2px solid #fff;
 	border-right-color: transparent;
 	border-radius: 50%;
-	animation-duration: 0.75s;
-	animation-iteration-count: infinite;
-	animation-name: rotate-forever;
-	animation-timing-function: linear;
-	-webkit-transform: translate3d(0,0,0);
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: rotate-forever;
+          animation-name: rotate-forever;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 	span{
 		display: block;
 		overflow: hidden;
