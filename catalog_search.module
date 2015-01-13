@@ -159,7 +159,18 @@ function catalog_search_catalog_form() {
  * @see catalog_search_catalog_form()
  */
 function catalog_search_catalog_form_submit($form, &$form_state) {
-  $form_state['redirect'] = _catalog_search_link($form_state['values']['search'], $form_state['values']['search-type--catalog']);
+  if (isset($form_state['values']['search'])) {
+    $search_query = $form_state['values']['search'];
+  } else {
+    $search_query = '';
+  }
+  if (isset($form_state['values']['search-type--catalog'])) {
+    $search_type = $form_state['values']['search-type--catalog'];
+  } else {
+    $search_type = 'X';
+  }
+
+  $form_state['redirect'] = _catalog_search_link($search_query, $search_type);
 }
 
 /** "Private" functions **/
