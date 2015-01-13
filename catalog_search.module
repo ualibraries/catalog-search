@@ -189,10 +189,15 @@ function catalog_search_catalog_form_submit($form, &$form_state) {
 function _catalog_search_link($search_query, $search_type) {
   $catalog_root = "http://sabio.library.arizona.edu/search/";
 
-  $http_query_parameters = array(
-    'SEARCH' => $search_query,
-    'searchscope' => variable_get('catalog_search_scope', 9),
-  );
+  $http_query_parameters = array();
+
+  if (!empty($search_query)) {
+    $http_query_parameters['SEARCH'] = $search_query;
+  } else {
+    $http_query_parameters['NOSRCH'] = '';
+  }
+
+  $http_query_parameters['searchscope'] = variable_get('catalog_search_scope', 9);
 
   $http_query_string = _catalog_search_http_build_query($http_query_parameters);
 
