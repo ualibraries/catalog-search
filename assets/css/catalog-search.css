@@ -1,11 +1,9 @@
-/* line 8, _mixins.scss */
 .catalog:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 33, _mixins.scss */
 .catalog .search-fields label, .catalog .form-item-search-type--catalog label,
 .catalog .catalog .form-item-search label {
   position: absolute !important;
@@ -17,52 +15,42 @@
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* line 4, catalog-search.scss */
 .catalog {
   line-height: 1.5;
   width: 90%;
   font-size: 14px;
   box-sizing: border-box;
 }
-/* line 10, catalog-search.scss */
 .catalog *, .catalog *:before, .catalog *:after {
   box-sizing: border-box;
 }
-/* line 13, catalog-search.scss */
 .catalog ul, .catalog p {
   padding: 0;
   margin: 0;
 }
-/* line 18, catalog-search.scss */
 .catalog a:link {
   color: #0c234b;
 }
-/* line 21, catalog-search.scss */
 .catalog a:hover, .catalog a:active {
   color: #ab0520;
 }
-/* line 25, catalog-search.scss */
 .catalog .form-item {
   margin: 0;
   padding: 0;
 }
-/* line 29, catalog-search.scss */
 .catalog input.form-submit {
   margin: 0;
   padding: 0;
 }
-/* line 33, catalog-search.scss */
 .catalog .search-fields {
   position: relative;
   margin: 0.5em 0;
 }
-/* line 39, catalog-search.scss */
 .catalog .search-fields .form-submit {
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 46, catalog-search.scss */
 .catalog .form-item-search-type--catalog,
 .catalog .catalog .form-item-search {
   float: left;
@@ -70,7 +58,6 @@
   margin-right: 1%;
   margin-top: 0.5em;
 }
-/* line 55, catalog-search.scss */
 .catalog .form-item-search-type--catalog select,
 .catalog .catalog .form-item-search select {
   margin: 0;
@@ -83,12 +70,10 @@
   height: 30px;
   width: 100%;
 }
-/* line 67, catalog-search.scss */
 .catalog .search-fields {
   float: left;
   width: 74%;
 }
-/* line 71, catalog-search.scss */
 .catalog input[type="search"],
 .catalog input[type="text"] {
   position: relative;
@@ -97,13 +82,11 @@
   padding: 2px 50px 2px 10px;
   height: 30px;
   transition: all .2s ease;
-  border-radius: 3px;
   -webkit-appearance: none;
   font-size: 15px;
   border: solid 1px #ddd;
   font-family: inherit;
 }
-/* line 85, catalog-search.scss */
 .catalog .search-fields input[type="submit"] {
   height: 32px;
   overflow: hidden;
@@ -112,29 +95,30 @@
   height: 30px;
   background-color: #0c234b;
   background-image: url("search-icon.svg");
+  /**
+   * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
+   * because IE 8 doesn't not support SVG.
+   *
+   * It's a much better idea to use something like modernizr:
+   * http://modernizr.com/
+   */
+  background-image: url("search-icon.png") \9;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   border: 0;
-  border-radius: 0 3px 3px 0;
+  border-radius: 0;
   /* Hide "search" text in button */
   text-indent: -500%;
   text-transform: capitalize;
 }
-/* line 101, catalog-search.scss */
 .catalog .search-fields input[type="submit"]:hover, .catalog .search-fields input[type="submit"]:focus, .catalog .search-fields input[type="submit"]:active {
   background-color: #ab0520;
 }
-/* line 104, catalog-search.scss */
-.no-svg .catalog .search-fields input[type="submit"] {
-  background-image: url("search-icon.png");
-}
-/* line 109, catalog-search.scss */
 .catalog .submitted input[type="submit"] {
   background-image: none;
   background-color: #ab0520;
 }
-/* line 114, catalog-search.scss */
 .catalog input[type="checkbox"] {
   padding: 0;
   margin: 0;
@@ -142,45 +126,35 @@
   position: relative;
   top: -1px;
 }
-/* line 121, catalog-search.scss */
 .catalog label {
   font-weight: normal;
   display: block;
 }
-/* line 125, catalog-search.scss */
 .catalog .advanced-search {
   float: right;
   padding: 10px 0 10px;
 }
 
 @-webkit-keyframes rotate-forever {
-  /* line 132, catalog-search.scss */
   0% {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-
-  /* line 136, catalog-search.scss */
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
 @keyframes rotate-forever {
-  /* line 132, catalog-search.scss */
   0% {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-
-  /* line 136, catalog-search.scss */
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-/* line 140, catalog-search.scss */
 .loading {
   position: absolute;
   display: none;
@@ -193,23 +167,24 @@
   border-right-color: transparent;
   border-radius: 50%;
   -webkit-animation-duration: 0.75s;
-          animation-duration: 0.75s;
+  animation-duration: 0.75s;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: rotate-forever;
-          animation-name: rotate-forever;
+  animation-name: rotate-forever;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
-/* line 156, catalog-search.scss */
 .loading span {
   display: block;
   overflow: hidden;
   text-indent: 120%;
 }
-/* line 161, catalog-search.scss */
 .submitted .loading {
   display: block;
   overflow: hidden;
 }
+
+/*# sourceMappingURL=catalog-search.css.map */
