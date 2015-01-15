@@ -1,9 +1,9 @@
-.block-catalog-search .content:after {
+.block-catalog-search:after {
   content: "";
   display: table;
   clear: both; }
 
-.block-catalog-search .content .search-fields label, .block-catalog-search .content .form-item-search-type--catalog label {
+.block-catalog-search .search-fields label, .block-catalog-search .form-item-search-type--catalog label {
   position: absolute !important;
   overflow: hidden;
   width: 1px;
@@ -12,39 +12,39 @@
   border: 0;
   clip: rect(1px, 1px, 1px, 1px); }
 
-.block-catalog-search .content {
+.block-catalog-search {
   line-height: 1.5;
   font-size: 14px;
   box-sizing: border-box; }
-  .block-catalog-search .content *, .block-catalog-search .content *:before, .block-catalog-search .content *:after {
+  .block-catalog-search *, .block-catalog-search *:before, .block-catalog-search *:after {
     box-sizing: border-box; }
-  .block-catalog-search .content ul,
-  .block-catalog-search .content p {
+  .block-catalog-search ul,
+  .block-catalog-search p {
     padding: 0;
     margin: 0; }
-  .block-catalog-search .content a:link {
+  .block-catalog-search a:link {
     color: #0c234b; }
-  .block-catalog-search .content a:hover, .block-catalog-search .content a:active {
+  .block-catalog-search a:hover, .block-catalog-search a:active {
     color: #ab0520; }
-  .block-catalog-search .content .form-item {
+  .block-catalog-search .form-item {
     margin: 0;
     padding: 0; }
-  .block-catalog-search .content input.form-submit {
+  .block-catalog-search input.form-submit {
     margin: 0;
     padding: 0; }
-  .block-catalog-search .content .search-fields {
+  .block-catalog-search .search-fields {
     position: relative;
     margin: 0.5em 0; }
-    .block-catalog-search .content .search-fields .form-submit {
+    .block-catalog-search .search-fields .form-submit {
       position: absolute;
       top: 0;
       right: 0; }
-  .block-catalog-search .content .form-item-search-type--catalog {
+  .block-catalog-search .form-item-search-type--catalog {
     float: left;
     width: 25%;
     margin-right: 1%;
     margin-top: 0.5em; }
-    .block-catalog-search .content .form-item-search-type--catalog select {
+    .block-catalog-search .form-item-search-type--catalog select {
       margin: 0;
       float: none;
       padding: 0;
@@ -54,11 +54,11 @@
       background: inherit;
       height: 30px;
       width: 100%; }
-  .block-catalog-search .content .search-fields {
+  .block-catalog-search .search-fields {
     float: left;
     width: 74%; }
-  .block-catalog-search .content input[type="search"],
-  .block-catalog-search .content input[type="text"] {
+  .block-catalog-search input[type="search"],
+  .block-catalog-search input[type="text"] {
     position: relative;
     width: 100%;
     margin: 0;
@@ -69,7 +69,7 @@
     font-size: 15px;
     border: solid 1px #ddd;
     font-family: inherit; }
-  .block-catalog-search .content .search-fields input[type="submit"] {
+  .block-catalog-search .search-fields input[type="submit"] {
     overflow: hidden;
     width: 50px;
     height: 30px;
@@ -91,21 +91,21 @@
     /* Hide "search" text in button */
     text-indent: -500%;
     text-transform: capitalize; }
-    .block-catalog-search .content .search-fields input[type="submit"]:hover, .block-catalog-search .content .search-fields input[type="submit"]:focus, .block-catalog-search .content .search-fields input[type="submit"]:active {
+    .block-catalog-search .search-fields input[type="submit"]:hover, .block-catalog-search .search-fields input[type="submit"]:focus, .block-catalog-search .search-fields input[type="submit"]:active {
       background-color: #ab0520; }
-  .block-catalog-search .content .submitted input[type="submit"] {
+  .block-catalog-search .submitted input[type="submit"] {
     background-image: none;
     background-color: #ab0520; }
-  .block-catalog-search .content input[type="checkbox"] {
+  .block-catalog-search input[type="checkbox"] {
     padding: 0;
     margin: 0;
     vertical-align: middle;
     position: relative;
     top: -1px; }
-  .block-catalog-search .content label {
+  .block-catalog-search label {
     font-weight: normal;
     display: block; }
-  .block-catalog-search .content .advanced-search {
+  .block-catalog-search .advanced-search {
     float: right;
     padding: 10px 0 10px; }
 
