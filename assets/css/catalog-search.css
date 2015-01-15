@@ -151,5 +151,6 @@
     overflow: hidden;
     text-indent: 120%; }
   .submitted .loading {
+    margin-top: -10px;
     display: block;
     overflow: hidden; }
