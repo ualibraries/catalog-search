@@ -3,7 +3,7 @@
   display: table;
   clear: both; }
 
-.block-catalog-search .form-item-search-type label, .block-catalog-search .search-fields label {
+.block-catalog-search .form-item label {
   position: absolute !important;
   overflow: hidden;
   width: 1px;
