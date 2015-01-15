@@ -9,27 +9,28 @@ $az-blue: #0c234b;
     display:table;
     clear:both;
   }
-  *, *:before, *:after {
-      box-sizing: border-box;
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
   }
-
   p {
-      padding: 0;
-      margin: 0;
+    padding: 0;
+    margin: 0;
   }
   .form-item {
-      margin: 0;
+    margin: 0;
+    padding: 0;
+    label {
+      //visually hidden
+      position: absolute !important;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
       padding: 0;
-      label {
-        //visually hidden
-        position: absolute !important;
-        overflow: hidden;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        border: 0;
-        clip: rect(1px, 1px, 1px, 1px);
-      }
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px);
+    }
   }
   .form-item-search-type {
     float: left;
@@ -48,77 +49,72 @@ $az-blue: #0c234b;
       width: 100%;
     }
   }
-
   .search-fields {
-      position: relative;
-      margin: 0.5em 0;
-      float: left;
-      width: 100%;
-      &.with-type {
-        width: 74%;
-      }
-      .form-submit {
-          position: absolute;
-          top: 0;
-          right: 0;
-      }
+    position: relative;
+    margin: 0.5em 0;
+    float: left;
+    width: 100%;
+    &.with-type {
+      width: 74%;
+    }
+    .form-submit {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
-
-
   input[type="search"],
   input[type="text"] {
-      position: relative;
-      width: 100%;
-      margin: 0;
-      padding: 2px 50px 2px 10px;
-      height: 30px;
-      transition: all .2s ease;
-      -webkit-appearance: none;
-      font-size: 15px;
-      border: solid 1px #ddd;
-      font-family: inherit;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 2px 50px 2px 10px;
+    height: 30px;
+    transition: all .2s ease;
+    -webkit-appearance: none;
+    font-size: 15px;
+    border: solid 1px #ddd;
+    font-family: inherit;
   }
   input.form-submit {
     margin: 0;
     padding: 0;
   }
   .search-fields input[type="submit"] {
-      overflow: hidden;
-      width: 50px;
-      height: 30px;
-      background-color: $az-blue;
-      background-image: url('search-icon.svg');
-      /**
-       * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
-       * because IE 8 doesn't support SVG.
-       *
-       * It's a much better idea to use something like modernizr:
-       * http://modernizr.com/
-       */
-      background-image: url('search-icon.png')\9;
-      background-repeat: no-repeat;
-      background-position: center;
-      cursor: pointer;
-      border: 0;
-      border-radius:  0;
-      /* Hide "search" text in button */
-      text-indent: -500%;
-      text-transform: capitalize;
-      &:hover, &:focus, &:active {
-          background-color: $az-red;
-      }
+    overflow: hidden;
+    width: 50px;
+    height: 30px;
+    background-color: $az-blue;
+    background-image: url('search-icon.svg');
+    /**
+     * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
+     * because IE 8 doesn't support SVG.
+     *
+     * It's a much better idea to use something like modernizr:
+     * http://modernizr.com/
+     */
+    background-image: url('search-icon.png')\9;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 0;
+    border-radius:  0;
+    /* Hide "search" text in button */
+    text-indent: -500%;
+    text-transform: capitalize;
+    &:hover, &:focus, &:active {
+      background-color: $az-red;
+    }
   }
-
   .submitted input[type="submit"] {
-      & {
-          background-image: none;
-          background-color: $az-red;
-      }
+    & {
+      background-image: none;
+      background-color: $az-red;
+    }
   }
-
   .advanced-search {
-      float: right;
-      padding: 10px 0 10px;
+    float: right;
+    padding: 10px 0 10px;
   }
 }
 
@@ -145,16 +141,16 @@ $az-blue: #0c234b;
 }
 
 .loading {
-	position: absolute;
-	display: none;
-	width: 20px;
-	height: 20px;
-	top: 50%;
-	right: 15px;
-	margin-top: -10px;
-	border: 2px solid #fff;
-	border-right-color: transparent;
-	border-radius: 50%;
+  position: absolute;
+  display: none;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  right: 15px;
+  margin-top: -10px;
+  border: 2px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
   -webkit-animation-duration: 0.75s;
           animation-duration: 0.75s;
   -webkit-animation-iteration-count: infinite;
@@ -165,14 +161,14 @@ $az-blue: #0c234b;
           animation-timing-function: linear;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-	span {
-		display: block;
-		overflow: hidden;
-  		text-indent: 120%;
-  	}
-    .submitted & {
-        margin-top: -10px;
-  		display: block;
-        overflow: hidden;
-  	}
+  span {
+    display: block;
+    overflow: hidden;
+    text-indent: 120%;
+  }
+  .submitted & {
+    margin-top: -10px;
+    display: block;
+    overflow: hidden;
+  }
 }
