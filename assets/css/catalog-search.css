@@ -47,7 +47,9 @@
     position: relative;
     margin: 0.5em 0;
     float: left;
-    width: 74%; }
+    width: 100%; }
+    .block-catalog-search .search-fields.with-type {
+      width: 74%; }
     .block-catalog-search .search-fields .form-submit {
       position: absolute;
       top: 0;

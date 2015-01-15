@@ -53,7 +53,10 @@
       position: relative;
       margin: 0.5em 0;
       float: left;
-      width: 74%;
+      width: 100%;
+      &.with-type {
+        width: 74%;
+      }
       .form-submit {
           position: absolute;
           top: 0;

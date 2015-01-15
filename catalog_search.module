@@ -128,10 +128,15 @@ function catalog_search_catalog_form() {
       '#default_value' => 'X',
       '#options' => $search_type_options,
     );
+    $form['search-fields'] = array(
+      '#markup' => '<div class="search-fields with-type">',
+    );
+  } else {
+    $form['search-fields'] = array(
+      '#markup' => '<div class="search-fields">',
+    );
   }
-  $form['search-fields'] = array(
-    '#markup' => '<div class="search-fields">',
-  );
+
   $form['search'] = array(
     '#type' => 'textfield',
     '#title' => t('Search'),
