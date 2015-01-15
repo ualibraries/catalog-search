@@ -28,15 +28,32 @@
       margin: 0;
       padding: 0;
   }
-
-  input.form-submit {
-    margin: 0;
-    padding: 0;
+  .form-item-search-type {
+    float: left;
+    width: 25%;
+    margin-right: 1%;
+    margin-top: 0.5em;
+    label {
+      @extend %visually-hidden;
+    }
+    select {
+      margin: 0;
+      float: none;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+      line-height: inherit;
+      background: inherit;
+      height: 30px;
+      width: 100%;
+    }
   }
 
   .search-fields {
       position: relative;
       margin: 0.5em 0;
+      float: left;
+      width: 74%;
       label {
           @extend %visually-hidden;
       }
@@ -47,31 +64,6 @@
       }
   }
 
-  .form-item-search-type {
-      float: left;
-      width: 25%;
-      margin-right: 1%;
-      margin-top: 0.5em;
-      label {
-          @extend %visually-hidden;
-      }
-      select {
-          margin: 0;
-          float: none;
-          padding: 0;
-          font-size: inherit;
-          font-family: inherit;
-          line-height: inherit;
-          background: inherit;
-          height: 30px;
-          width: 100%;
-      }
-  }
-
-  .search-fields {
-    float: left;
-    width: 74%;
-  }
 
   input[type="search"],
   input[type="text"] {
@@ -86,7 +78,10 @@
       border: solid 1px #ddd;
       font-family: inherit;
   }
-
+  input.form-submit {
+    margin: 0;
+    padding: 0;
+  }
   .search-fields input[type="submit"] {
       overflow: hidden;
       width: 50px;

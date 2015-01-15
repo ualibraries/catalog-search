@@ -3,7 +3,7 @@
   display: table;
   clear: both; }
 
-.block-catalog-search .search-fields label, .block-catalog-search .form-item-search-type label {
+.block-catalog-search .form-item-search-type label, .block-catalog-search .search-fields label {
   position: absolute !important;
   overflow: hidden;
   width: 1px;
@@ -28,16 +28,6 @@
   .block-catalog-search .form-item {
     margin: 0;
     padding: 0; }
-  .block-catalog-search input.form-submit {
-    margin: 0;
-    padding: 0; }
-  .block-catalog-search .search-fields {
-    position: relative;
-    margin: 0.5em 0; }
-    .block-catalog-search .search-fields .form-submit {
-      position: absolute;
-      top: 0;
-      right: 0; }
   .block-catalog-search .form-item-search-type {
     float: left;
     width: 25%;
@@ -54,8 +44,14 @@
       height: 30px;
       width: 100%; }
   .block-catalog-search .search-fields {
+    position: relative;
+    margin: 0.5em 0;
     float: left;
     width: 74%; }
+    .block-catalog-search .search-fields .form-submit {
+      position: absolute;
+      top: 0;
+      right: 0; }
   .block-catalog-search input[type="search"],
   .block-catalog-search input[type="text"] {
     position: relative;
@@ -68,6 +64,9 @@
     font-size: 15px;
     border: solid 1px #ddd;
     font-family: inherit; }
+  .block-catalog-search input.form-submit {
+    margin: 0;
+    padding: 0; }
   .block-catalog-search .search-fields input[type="submit"] {
     overflow: hidden;
     width: 50px;
