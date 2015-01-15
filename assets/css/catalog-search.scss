@@ -19,17 +19,6 @@ $az-blue: #0c234b;
       padding: 0;
       margin: 0;
   }
-
-  a {
-      &:link {
-          color: $az-blue;
-      }
-      &:hover,
-      &:active {
-          color: $az-red;
-      }
-  }
-
   .form-item {
       margin: 0;
       padding: 0;
