@@ -122,12 +122,11 @@ function catalog_search_catalog_form() {
   $form = array();
 
   if (count($search_type_options) > 1) {
-    $form['search-type--catalog'] = array(
+    $form['search-type'] = array(
       '#type' => 'select',
       '#title' => t('Search Type'),
       '#default_value' => 'X',
       '#options' => $search_type_options,
-      '#attributes' => array('class' => array('chosen-select-nosearch')),
     );
   }
   $form['search-fields'] = array(
@@ -169,8 +168,8 @@ function catalog_search_catalog_form_submit($form, &$form_state) {
   } else {
     $search_query = '';
   }
-  if (isset($form_state['values']['search-type--catalog'])) {
-    $search_type = $form_state['values']['search-type--catalog'];
+  if (isset($form_state['values']['search-type'])) {
+    $search_type = $form_state['values']['search-type'];
   } else {
     $search_type = 'X';
   }
