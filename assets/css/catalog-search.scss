@@ -1,29 +1,31 @@
 @import "mixins";
 
-.block-catalog-search .content{
+.block-catalog-search .content {
   line-height: 1.5;
   font-size: 14px;
   box-sizing: border-box;
   @extend %cf;
-  *, *:before, *:after{
+  *, *:before, *:after {
       box-sizing: border-box;
   }
 
-  ul,p{
+  ul,
+  p {
       padding: 0;
       margin: 0;
   }
 
-  a{
-      &:link{
+  a {
+      &:link {
           color: $az-blue;
       }
-      &:hover, &:active{
+      &:hover,
+      &:active {
           color: $az-red;
       }
   }
 
-  .form-item{
+  .form-item {
       margin: 0;
       padding: 0;
   }
@@ -33,13 +35,13 @@
     padding: 0;
   }
 
-  .search-fields{
+  .search-fields {
       position: relative;
       margin: 0.5em 0;
-      label{
+      label {
           @extend %visually-hidden;
       }
-      .form-submit{
+      .form-submit {
           position: absolute;
           top: 0;
           right: 0;
@@ -51,10 +53,10 @@
       width: 25%;
       margin-right: 1%;
       margin-top: 0.5em;
-      label{
+      label {
           @extend %visually-hidden;
       }
-      select{
+      select {
           margin: 0;
           float: none;
           padding: 0;
@@ -73,7 +75,7 @@
   }
 
   input[type="search"],
-  input[type="text"]{
+  input[type="text"] {
       position: relative;
       width: 100%;
       margin: 0;
@@ -86,7 +88,7 @@
       font-family: inherit;
   }
 
-  .search-fields input[type="submit"]{
+  .search-fields input[type="submit"] {
       height: 32px;
       overflow: hidden;
       border: 0;
@@ -110,19 +112,19 @@
       /* Hide "search" text in button */
       text-indent: -500%;
       text-transform: capitalize;
-      &:hover, &:focus, &:active{
+      &:hover, &:focus, &:active {
           background-color: $az-red;
       }
   }
 
   .submitted input[type="submit"] {
-      &{
+      & {
           background-image: none;
           background-color: $az-red;
       }
   }
 
-  input[type="checkbox"]{
+  input[type="checkbox"] {
       padding: 0;
       margin:0;
       vertical-align: middle;
@@ -130,12 +132,12 @@
       top: -1px;
   }
 
-  label{
+  label {
       font-weight: normal;
       display: block;
   }
 
-  .advanced-search{
+  .advanced-search {
       float: right;
       padding: 10px 0 10px;
   }
@@ -184,12 +186,12 @@
           animation-timing-function: linear;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-	span{
+	span {
 		display: block;
 		overflow: hidden;
   		text-indent: 120%;
   	}
-    .submitted &{
+    .submitted & {
   		display: block;
         overflow: hidden;
   	}
