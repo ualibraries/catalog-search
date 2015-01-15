@@ -1,10 +1,16 @@
-@import "mixins";
+$az-red: #ab0520;
+$az-blue: #0c234b;
 
 .block-catalog-search {
   line-height: 1.5;
   font-size: 14px;
   box-sizing: border-box;
-  @extend %cf;
+  //clearfix
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
   *, *:before, *:after {
       box-sizing: border-box;
   }
@@ -28,7 +34,14 @@
       margin: 0;
       padding: 0;
       label {
-        @extend %visually-hidden;
+        //visually hidden
+        position: absolute !important;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        border: 0;
+        clip: rect(1px, 1px, 1px, 1px);
       }
   }
   .form-item-search-type {

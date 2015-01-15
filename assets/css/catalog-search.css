@@ -1,21 +1,11 @@
-.block-catalog-search:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-.block-catalog-search .form-item label {
-  position: absolute !important;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px); }
-
 .block-catalog-search {
   line-height: 1.5;
   font-size: 14px;
   box-sizing: border-box; }
+  .block-catalog-search:after {
+    content: "";
+    display: table;
+    clear: both; }
   .block-catalog-search *, .block-catalog-search *:before, .block-catalog-search *:after {
     box-sizing: border-box; }
   .block-catalog-search p {
@@ -28,6 +18,14 @@
   .block-catalog-search .form-item {
     margin: 0;
     padding: 0; }
+    .block-catalog-search .form-item label {
+      position: absolute !important;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px); }
   .block-catalog-search .form-item-search-type {
     float: left;
     width: 25%;
