@@ -4,37 +4,38 @@
     content: "";
     display: table;
     clear: both; }
-  .block-catalog-search *, .block-catalog-search *:before, .block-catalog-search *:after {
+  .block-catalog-search *,
+  .block-catalog-search *:before,
+  .block-catalog-search *:after {
     box-sizing: border-box; }
-  .block-catalog-search p {
+  .block-catalog-search p,
+  .block-catalog-search input.form-submit,
+  .block-catalog-search .form-item {
     padding: 0;
     margin: 0; }
-  .block-catalog-search .form-item {
-    margin: 0;
-    padding: 0; }
-    .block-catalog-search .form-item label {
-      position: absolute !important;
-      overflow: hidden;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      border: 0;
-      clip: rect(1px, 1px, 1px, 1px); }
+  .block-catalog-search label {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px); }
   .block-catalog-search .form-item-search-type {
     float: left;
     width: 25%;
     margin-right: 1%;
     margin-top: 0.5em; }
-    .block-catalog-search .form-item-search-type select {
-      margin: 0;
-      float: none;
-      padding: 0;
-      font-size: inherit;
-      font-family: inherit;
-      line-height: inherit;
-      background: inherit;
-      height: 30px;
-      width: 100%; }
+  .block-catalog-search select {
+    margin: 0;
+    float: none;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    background: inherit;
+    height: 30px;
+    width: 100%; }
   .block-catalog-search .search-fields {
     position: relative;
     margin: 0.5em 0;
@@ -42,10 +43,6 @@
     width: 100%; }
     .block-catalog-search .search-fields.with-type {
       width: 74%; }
-    .block-catalog-search .search-fields .form-submit {
-      position: absolute;
-      top: 0;
-      right: 0; }
   .block-catalog-search input[type="search"],
   .block-catalog-search input[type="text"] {
     position: relative;
@@ -58,9 +55,10 @@
     font-size: 15px;
     border: solid 1px #ddd;
     font-family: inherit; }
-  .block-catalog-search input.form-submit {
-    margin: 0;
-    padding: 0; }
+  .block-catalog-search .form-submit {
+    position: absolute;
+    top: 0;
+    right: 0; }
   .block-catalog-search .search-fields input[type="submit"] {
     overflow: hidden;
     width: 50px;
