@@ -78,7 +78,6 @@ $az-blue: #0c234b;
     overflow: hidden;
     width: 50px;
     height: 30px;
-    background-color: $az-blue;
     background-image: url('search-icon.svg');
     /**
      * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
@@ -96,6 +95,9 @@ $az-blue: #0c234b;
     /* Hide "search" text in button */
     text-indent: -500%;
     text-transform: capitalize;
+  }
+  input[type="submit"] {
+    background-color: $az-blue;
     &:hover, &:focus, &:active {
       background-color: $az-red;
     }

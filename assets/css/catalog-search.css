@@ -63,7 +63,6 @@
     overflow: hidden;
     width: 50px;
     height: 30px;
-    background-color: #0c234b;
     background-image: url("search-icon.svg");
     /**
      * The following rule ends in `\9`, which is a hack to show it only to <= IE8,
@@ -81,7 +80,9 @@
     /* Hide "search" text in button */
     text-indent: -500%;
     text-transform: capitalize; }
-    .block-catalog-search .search-fields input[type="submit"]:hover, .block-catalog-search .search-fields input[type="submit"]:focus, .block-catalog-search .search-fields input[type="submit"]:active {
+  .block-catalog-search input[type="submit"] {
+    background-color: #0c234b; }
+    .block-catalog-search input[type="submit"]:hover, .block-catalog-search input[type="submit"]:focus, .block-catalog-search input[type="submit"]:active {
       background-color: #ab0520; }
   .block-catalog-search .submitted input[type="submit"] {
     background-image: none;
