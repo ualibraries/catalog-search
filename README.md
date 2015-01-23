@@ -14,4 +14,4 @@ Assign the block to a region using Structure > Blocks or context.
 Changing the block:
 * Markup: copy catalog_search.tpl.php into your theme and modify the HTML as needed.
 * Styling: use CSS in a custom theme to override the block styles.
-* Form fields: use a custom module to implement a hook_form_catalog_search_catalog_form_alter
+* Form fields: use a custom module to implement a hook_form_catalog_search_catalog_form_alter. Or submit a pull request. Or ask us! :-)
