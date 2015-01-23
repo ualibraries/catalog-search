@@ -131,7 +131,8 @@ function catalog_search_catalog_form() {
     $form['search-fields'] = array(
       '#markup' => '<div class="search-fields with-type">',
     );
-  } else {
+  }
+  else {
     $form['search-fields'] = array(
       '#markup' => '<div class="search-fields">',
     );
@@ -155,7 +156,7 @@ function catalog_search_catalog_form() {
   );
   if (variable_get('catalog_search_show_advanced', 1)) {
     $form['advanced-search'] = array(
-      '#markup' => '<a class="advanced-search" href="' . _catalog_search_link($search_query = '',$search_type = 'X') . '">Advanced Search</a>',
+      '#markup' => '<a class="advanced-search" href="' . _catalog_search_link($search_query = '', $search_type = 'X') . '">Advanced Search</a>',
     );
   }
 
@@ -170,12 +171,14 @@ function catalog_search_catalog_form() {
 function catalog_search_catalog_form_submit($form, &$form_state) {
   if (isset($form_state['values']['search'])) {
     $search_query = $form_state['values']['search'];
-  } else {
+  }
+  else {
     $search_query = '';
   }
   if (isset($form_state['values']['search-type'])) {
     $search_type = $form_state['values']['search-type'];
-  } else {
+  }
+  else {
     $search_type = 'X';
   }
 
@@ -202,7 +205,8 @@ function _catalog_search_link($search_query, $search_type) {
 
   if (!empty($search_query)) {
     $http_query_parameters['SEARCH'] = $search_query;
-  } else {
+  }
+  else {
     $http_query_parameters['NOSRCH'] = '';
   }
 
